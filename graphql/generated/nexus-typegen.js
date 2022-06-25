@@ -9,16 +9,19 @@ type Link {
   imagesUrl: String
   title: String
   url: String
+  userId: String
   users: [User]
 }
 
 type Mutation {
-  user(admin: Boolean!, email: String!): User!
+  createUser(admin: Boolean!, email: String!): User!
+  links(category: String!, description: String!, imagesUrl: String!, title: String!, url: String!, userId: String!): Link!
 }
 
 type Query {
   links: [Link]!
-  user: [User]!
+  user(id: String!): User!
+  users: [User]
 }
 
 type User {

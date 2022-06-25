@@ -1,4 +1,4 @@
-export const data = [
+export const datas = [
   {
     category: "Open Source",
     description: "Fullstack React framework",

@@ -35,6 +35,7 @@ export interface NexusGenObjects {
     imagesUrl?: string | null; // String
     title?: string | null; // String
     url?: string | null; // String
+    userId?: string | null; // String
   }
   Mutation: {};
   Query: {};
@@ -63,14 +64,17 @@ export interface NexusGenFieldTypes {
     imagesUrl: string | null; // String
     title: string | null; // String
     url: string | null; // String
+    userId: string | null; // String
     users: Array<NexusGenRootTypes['User'] | null> | null; // [User]
   }
   Mutation: { // field return type
-    user: NexusGenRootTypes['User']; // User!
+    createUser: NexusGenRootTypes['User']; // User!
+    links: NexusGenRootTypes['Link']; // Link!
   }
   Query: { // field return type
     links: Array<NexusGenRootTypes['Link'] | null>; // [Link]!
-    user: Array<NexusGenRootTypes['User'] | null>; // [User]!
+    user: NexusGenRootTypes['User']; // User!
+    users: Array<NexusGenRootTypes['User'] | null> | null; // [User]
   }
   User: { // field return type
     admin: boolean | null; // Boolean
@@ -88,14 +92,17 @@ export interface NexusGenFieldTypeNames {
     imagesUrl: 'String'
     title: 'String'
     url: 'String'
+    userId: 'String'
     users: 'User'
   }
   Mutation: { // field return type name
-    user: 'User'
+    createUser: 'User'
+    links: 'Link'
   }
   Query: { // field return type name
     links: 'Link'
     user: 'User'
+    users: 'User'
   }
   User: { // field return type name
     admin: 'Boolean'
@@ -107,9 +114,22 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
-    user: { // args
+    createUser: { // args
       admin: boolean; // Boolean!
       email: string; // String!
+    }
+    links: { // args
+      category: string; // String!
+      description: string; // String!
+      imagesUrl: string; // String!
+      title: string; // String!
+      url: string; // String!
+      userId: string; // String!
+    }
+  }
+  Query: {
+    user: { // args
+      id: string; // String!
     }
   }
 }

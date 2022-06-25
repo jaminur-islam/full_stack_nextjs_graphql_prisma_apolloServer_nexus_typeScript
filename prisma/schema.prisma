@@ -11,26 +11,29 @@ generator client {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        Int      @id @default(autoincrement())
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
-  email     String   @unique
+  email     String
   image     String?
   admin     Boolean
-  Link      Link[]
+  link      Link[]
 
   @@map("user")
 }
 
 model Link {
-  id          String   @id @default(uuid())
+  id          Int      @id @default(autoincrement())
   createAt    DateTime @default(now())
   updatedAt   DateTime @updatedAt
   title       String
   description String
 
-  User   User?   @relation(fields: [userId], references: [id])
-  userId String?
+  userId    Int?
+  url       String?
+  imagesUrl String?
+  category  String?
 
+  User User? @relation(fields: [userId], references: [id])
   @@map("link")
 }
